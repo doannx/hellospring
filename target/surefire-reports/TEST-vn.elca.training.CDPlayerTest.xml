@@ -107,21 +107,21 @@ Caused by: org.springframework.beans.factory.NoUniqueBeanDefinitionException: No
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:566)
 	... 34 more
 </error>
-    <system-err>Jul 13, 2016 11:37:24 AM org.springframework.test.context.support.DefaultTestContextBootstrapper getDefaultTestExecutionListenerClassNames
+    <system-err>Jul 13, 2016 11:43:25 AM org.springframework.test.context.support.DefaultTestContextBootstrapper getDefaultTestExecutionListenerClassNames
 INFO: Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
-Jul 13, 2016 11:37:24 AM org.springframework.test.context.support.DefaultTestContextBootstrapper instantiateListeners
+Jul 13, 2016 11:43:25 AM org.springframework.test.context.support.DefaultTestContextBootstrapper instantiateListeners
 INFO: Could not instantiate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/interceptor/TransactionAttributeSource]
-Jul 13, 2016 11:37:24 AM org.springframework.test.context.support.DefaultTestContextBootstrapper instantiateListeners
+Jul 13, 2016 11:43:25 AM org.springframework.test.context.support.DefaultTestContextBootstrapper instantiateListeners
 INFO: Could not instantiate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute]
-Jul 13, 2016 11:37:24 AM org.springframework.test.context.support.DefaultTestContextBootstrapper instantiateListeners
+Jul 13, 2016 11:43:25 AM org.springframework.test.context.support.DefaultTestContextBootstrapper instantiateListeners
 INFO: Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext]
-Jul 13, 2016 11:37:24 AM org.springframework.test.context.support.DefaultTestContextBootstrapper getTestExecutionListeners
+Jul 13, 2016 11:43:25 AM org.springframework.test.context.support.DefaultTestContextBootstrapper getTestExecutionListeners
 INFO: Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@7ca48474, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@337d0578, org.springframework.test.context.support.DirtiesContextTestExecutionListener@59e84876]
-Jul 13, 2016 11:37:24 AM org.springframework.context.support.GenericApplicationContext prepareRefresh
-INFO: Refreshing org.springframework.context.support.GenericApplicationContext@55f3ddb1: startup date [Wed Jul 13 11:37:24 ICT 2016]; root of context hierarchy
-Jul 13, 2016 11:37:24 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+Jul 13, 2016 11:43:25 AM org.springframework.context.support.GenericApplicationContext prepareRefresh
+INFO: Refreshing org.springframework.context.support.GenericApplicationContext@55f3ddb1: startup date [Wed Jul 13 11:43:25 ICT 2016]; root of context hierarchy
+Jul 13, 2016 11:43:25 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
 INFO: Loading XML bean definitions from class path resource [bean-config.xml]
-Jul 13, 2016 11:37:24 AM org.springframework.test.context.TestContextManager prepareTestInstance
+Jul 13, 2016 11:43:25 AM org.springframework.test.context.TestContextManager prepareTestInstance
 SEVERE: Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@337d0578] to prepare test instance [vn.elca.training.CDPlayerTest@6a78afa0]
 org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name &apos;vn.elca.training.CDPlayerTest&apos;: Unsatisfied dependency expressed through field &apos;blank&apos;: No qualifying bean of type [soundsystem.CompactDisc] is defined: expected single matching bean but found 2: doanPeppers,blankXML; nested exception is org.springframework.beans.factory.NoUniqueBeanDefinitionException: No qualifying bean of type [soundsystem.CompactDisc] is defined: expected single matching bean but found 2: doanPeppers,blankXML
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:569)

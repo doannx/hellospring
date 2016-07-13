@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
 Test set: vn.elca.training.CDPlayerTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.204 sec <<< FAILURE!
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.251 sec <<< FAILURE!
 cdShouldNotBeNull(vn.elca.training.CDPlayerTest)  Time elapsed: 0 sec  <<< ERROR!
 org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'vn.elca.training.CDPlayerTest': Unsatisfied dependency expressed through field 'blank': No qualifying bean of type [soundsystem.CompactDisc] is defined: expected single matching bean but found 2: doanPeppers,blankXML; nested exception is org.springframework.beans.factory.NoUniqueBeanDefinitionException: No qualifying bean of type [soundsystem.CompactDisc] is defined: expected single matching bean but found 2: doanPeppers,blankXML
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:569)
