@@ -9,7 +9,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import soundsystem.CDPlayer;
 import soundsystem.CDPlayerConfig;
 import soundsystem.CompactDisc;
-import soundsystem.SgtPeppers;
 import soundsystem.TestByMyself;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -17,7 +16,7 @@ import soundsystem.TestByMyself;
 public class CDPlayerTest {
 
 	@Autowired
-	private SgtPeppers doanPeppers;
+	private CompactDisc doanPeppers;
 
 	@Autowired(required = false)
 	private TestByMyself test;
