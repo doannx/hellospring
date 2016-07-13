@@ -41,10 +41,11 @@
     <property name="file.encoding" value="Cp1252"/>
     <property name="user.name" value="xdg"/>
     <property name="java.class.path" value="d:\projects\on-boarding\tools\maven\boot\plexus-classworlds-2.5.2.jar"/>
+    <property name="org.slf4j.simpleLogger.defaultLogLevel" value="error"/>
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="d:\projects\on-boarding\tools\java\jdk1.8.0_92\jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test -q"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -64,13 +65,10 @@
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
   <testcase classname="vn.elca.training.CDPlayerTest" name="cdShouldNotBeNull" time="0">
-    <error message="Error creating bean with name &apos;vn.elca.training.CDPlayerTest&apos;: Unsatisfied dependency expressed through field &apos;blank&apos;: No qualifying bean of type [soundsystem.CompactDisc] is defined: expected single matching bean but found 2: doanPeppers,blankXML; nested exception is org.springframework.beans.factory.NoUniqueBeanDefinitionException: No qualifying bean of type [soundsystem.CompactDisc] is defined: expected single matching bean but found 2: doanPeppers,blankXML" type="org.springframework.beans.factory.UnsatisfiedDependencyException">org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name &apos;vn.elca.training.CDPlayerTest&apos;: Unsatisfied dependency expressed through field &apos;blank&apos;: No qualifying bean of type [soundsystem.CompactDisc] is defined: expected single matching bean but found 2: doanPeppers,blankXML; nested exception is org.springframework.beans.factory.NoUniqueBeanDefinitionException: No qualifying bean of type [soundsystem.CompactDisc] is defined: expected single matching bean but found 2: doanPeppers,blankXML
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:569)
-	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:349)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1214)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:385)
-	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:118)
+    <error message="Failed to load ApplicationContext" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:124)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:83)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:117)
 	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83)
 	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:230)
 	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:228)
@@ -100,36 +98,51 @@
 	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
-Caused by: org.springframework.beans.factory.NoUniqueBeanDefinitionException: No qualifying bean of type [soundsystem.CompactDisc] is defined: expected single matching bean but found 2: doanPeppers,blankXML
-	at org.springframework.beans.factory.config.DependencyDescriptor.resolveNotUnique(DependencyDescriptor.java:172)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1064)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1018)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:566)
-	... 34 more
+Caused by: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [soundsystem.CDPlayerConfig]; nested exception is org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name &apos;doanPeppers&apos; for bean class [soundsystem.SgtPeppers] conflicts with existing, non-compatible bean definition of same name and class [soundsystem.BlankDisc]
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:187)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:243)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:273)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:98)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:681)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:523)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:128)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:60)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.delegateLoading(AbstractDelegatingSmartContextLoader.java:108)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.loadContext(AbstractDelegatingSmartContextLoader.java:251)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:98)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:116)
+	... 31 more
+Caused by: org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name &apos;doanPeppers&apos; for bean class [soundsystem.SgtPeppers] conflicts with existing, non-compatible bean definition of same name and class [soundsystem.BlankDisc]
+	at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.checkCandidate(ClassPathBeanDefinitionScanner.java:320)
+	at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.doScan(ClassPathBeanDefinitionScanner.java:259)
+	at org.springframework.context.annotation.ComponentScanAnnotationParser.parse(ComponentScanAnnotationParser.java:144)
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:275)
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:237)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:204)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:173)
+	... 43 more
 </error>
-    <system-err>Jul 13, 2016 11:43:25 AM org.springframework.test.context.support.DefaultTestContextBootstrapper getDefaultTestExecutionListenerClassNames
+    <system-err>Jul 13, 2016 2:32:20 PM org.springframework.test.context.support.DefaultTestContextBootstrapper getDefaultTestExecutionListenerClassNames
 INFO: Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
-Jul 13, 2016 11:43:25 AM org.springframework.test.context.support.DefaultTestContextBootstrapper instantiateListeners
+Jul 13, 2016 2:32:20 PM org.springframework.test.context.support.DefaultTestContextBootstrapper instantiateListeners
 INFO: Could not instantiate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/interceptor/TransactionAttributeSource]
-Jul 13, 2016 11:43:25 AM org.springframework.test.context.support.DefaultTestContextBootstrapper instantiateListeners
-INFO: Could not instantiate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute]
-Jul 13, 2016 11:43:25 AM org.springframework.test.context.support.DefaultTestContextBootstrapper instantiateListeners
+Jul 13, 2016 2:32:20 PM org.springframework.test.context.support.DefaultTestContextBootstrapper instantiateListeners
 INFO: Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext]
-Jul 13, 2016 11:43:25 AM org.springframework.test.context.support.DefaultTestContextBootstrapper getTestExecutionListeners
-INFO: Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@7ca48474, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@337d0578, org.springframework.test.context.support.DirtiesContextTestExecutionListener@59e84876]
-Jul 13, 2016 11:43:25 AM org.springframework.context.support.GenericApplicationContext prepareRefresh
-INFO: Refreshing org.springframework.context.support.GenericApplicationContext@55f3ddb1: startup date [Wed Jul 13 11:43:25 ICT 2016]; root of context hierarchy
-Jul 13, 2016 11:43:25 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
-INFO: Loading XML bean definitions from class path resource [bean-config.xml]
-Jul 13, 2016 11:43:25 AM org.springframework.test.context.TestContextManager prepareTestInstance
-SEVERE: Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@337d0578] to prepare test instance [vn.elca.training.CDPlayerTest@6a78afa0]
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name &apos;vn.elca.training.CDPlayerTest&apos;: Unsatisfied dependency expressed through field &apos;blank&apos;: No qualifying bean of type [soundsystem.CompactDisc] is defined: expected single matching bean but found 2: doanPeppers,blankXML; nested exception is org.springframework.beans.factory.NoUniqueBeanDefinitionException: No qualifying bean of type [soundsystem.CompactDisc] is defined: expected single matching bean but found 2: doanPeppers,blankXML
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:569)
-	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:349)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1214)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:385)
-	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:118)
+Jul 13, 2016 2:32:20 PM org.springframework.test.context.support.DefaultTestContextBootstrapper instantiateListeners
+INFO: Could not instantiate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute]
+Jul 13, 2016 2:32:20 PM org.springframework.test.context.support.DefaultTestContextBootstrapper getTestExecutionListeners
+INFO: Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@39fb3ab6, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@6276ae34, org.springframework.test.context.support.DirtiesContextTestExecutionListener@7946e1f4]
+Jul 13, 2016 2:32:20 PM org.springframework.context.support.GenericApplicationContext prepareRefresh
+INFO: Refreshing org.springframework.context.support.GenericApplicationContext@4b9e13df: startup date [Wed Jul 13 14:32:20 ICT 2016]; root of context hierarchy
+Jul 13, 2016 2:32:20 PM org.springframework.context.support.GenericApplicationContext refresh
+WARNING: Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [soundsystem.CDPlayerConfig]; nested exception is org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name &apos;doanPeppers&apos; for bean class [soundsystem.SgtPeppers] conflicts with existing, non-compatible bean definition of same name and class [soundsystem.BlankDisc]
+Jul 13, 2016 2:32:20 PM org.springframework.test.context.TestContextManager prepareTestInstance
+SEVERE: Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@6276ae34] to prepare test instance [vn.elca.training.CDPlayerTest@5d47c63f]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:124)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:83)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:117)
 	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83)
 	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:230)
 	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:228)
@@ -159,12 +172,30 @@ org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating
 	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
-Caused by: org.springframework.beans.factory.NoUniqueBeanDefinitionException: No qualifying bean of type [soundsystem.CompactDisc] is defined: expected single matching bean but found 2: doanPeppers,blankXML
-	at org.springframework.beans.factory.config.DependencyDescriptor.resolveNotUnique(DependencyDescriptor.java:172)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1064)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1018)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:566)
-	... 34 more
+Caused by: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [soundsystem.CDPlayerConfig]; nested exception is org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name &apos;doanPeppers&apos; for bean class [soundsystem.SgtPeppers] conflicts with existing, non-compatible bean definition of same name and class [soundsystem.BlankDisc]
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:187)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:243)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:273)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:98)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:681)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:523)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:128)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:60)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.delegateLoading(AbstractDelegatingSmartContextLoader.java:108)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.loadContext(AbstractDelegatingSmartContextLoader.java:251)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:98)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:116)
+	... 31 more
+Caused by: org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name &apos;doanPeppers&apos; for bean class [soundsystem.SgtPeppers] conflicts with existing, non-compatible bean definition of same name and class [soundsystem.BlankDisc]
+	at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.checkCandidate(ClassPathBeanDefinitionScanner.java:320)
+	at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.doScan(ClassPathBeanDefinitionScanner.java:259)
+	at org.springframework.context.annotation.ComponentScanAnnotationParser.parse(ComponentScanAnnotationParser.java:144)
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:275)
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:237)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:204)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:173)
+	... 43 more
 
 </system-err>
   </testcase>
