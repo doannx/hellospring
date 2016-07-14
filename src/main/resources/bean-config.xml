@@ -13,7 +13,7 @@
 	<!-- <bean id="doanPeppers" class="soundsystem.SgtPeppers"/> -->
 
 	<bean id="blankXML" class="soundsystem.BlankDisc"
-		c:_0="Sgt. Pepper's Lonely Hearts Club Band" c:_1="The Beatles">
+		c:_0="Sgt. Pepper's Lonely Hearts Club Band" c:_1="The Beatles" autowire="byName">
 		<constructor-arg>
 			<list>
 				<value>Sgt. Pepper's Lonely Hearts Club Band</value>

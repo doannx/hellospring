@@ -41,4 +41,13 @@ public class Employee implements InitializingBean, DisposableBean {
 		System.out.println("I am in afterPropertiesSet... ");
 
 	}
+
+	public void initIt() throws Exception {
+		System.out.println("Init method after properties are set : " + id + " "
+				+ position);
+	}
+
+	public void cleanUp() throws Exception {
+		System.out.println("Spring Clean Up! Employee is cleaned up now.");
+	}
 }
